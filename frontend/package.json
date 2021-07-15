@@ -4,7 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "start-run": "node server.js"
+    "start-run": "node server.js",
+    "build": "ng build",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

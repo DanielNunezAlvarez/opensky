@@ -1,8 +1,8 @@
-FROM node:10
+FROM node
 
 WORKDIR /usr/src/app/frontend
 
-COPY package*.json ./
+COPY . ./
 
 RUN npm install -g @angular/cli @angular-devkit/build-angular && npm install
 

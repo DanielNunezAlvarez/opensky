@@ -1,8 +1,8 @@
-FROM node:10
+FROM node
 
 WORKDIR /usr/src/app/backend
 
-COPY package*.json ./
+COPY . ./
 
 RUN npm install
 
