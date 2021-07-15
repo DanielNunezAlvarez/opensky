@@ -34,7 +34,7 @@
         </div>
         
         <!-- Date picker: Begin Date -->
-        <div class="control-section" style="overflow:auto;padding-left:150px">
+        <div class="control-section" style="overflow:auto;padding-left:50px">
             <div>
                 Select an initial date:
             </div>   
@@ -48,7 +48,7 @@
         </div>
 
         <!-- Date picker: End Date -->
-        <div class="control-section" style="overflow:auto;padding-left:150px">
+        <div class="control-section" style="overflow:auto;padding-left:50px">
             <div>
                 Select a final date:
             </div>  
@@ -67,7 +67,7 @@
     <div class="row">
 
         <!-- Table -->
-        <div class="control-section" style="padding-top: 50px;">
+        <div class="control-table" style="padding-top: 50px;">
             <ejs-toolbar class='e-gridlist' (clicked)="onClicked($event.originalEvent)">
                 <e-items>
                     <e-item text='Departure Airport'></e-item>
@@ -90,7 +90,7 @@
     <!-- Maps -->
     <div class="row">
 
-        <div class="control-section" style="padding-top: 50px; padding-left: 300px;">
+        <div class="control-map" style="padding-top: 50px; padding-left: 300px;">
 
             <div >
                 <ejs-maps id='container' style="display:block;" [zoomSettings]='zoomSettings' [layers]='layers' 
