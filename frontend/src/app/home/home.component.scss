@@ -1,0 +1,41 @@
+@import "~bootstrap/scss/bootstrap";
+@import '~@nebular/theme/styles/global/breakpoints';
+
+.property-panel-content {
+  padding: 0 10px 10px 0;
+}
+
+.content{
+  width: 100%;
+  margin: 0 auto;
+  min-width: 185px;
+  padding: 25px 0px;
+}
+
+.control-section,
+.control-wrapper{
+  min-height: 350px;
+}
+
+@media screen and (max-width: 590px) {
+  .sortingenabled {
+    margin-top: 30px;
+  }
+}
+
+.e-gridlist .e-tbar-btn.e-btn,
+.e-gridlist .e-btn  {
+    box-shadow: none;
+    text-transform: none;
+}
+
+.e-ghidden {
+    opacity: 0.35;
+}
+
+.e-mastertext {
+    font-size: 15px;
+    font-family: Roboto;
+    opacity: 0.87;
+    padding: 1em;
+}

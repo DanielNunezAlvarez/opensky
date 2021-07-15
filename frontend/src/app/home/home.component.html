@@ -1,0 +1,107 @@
+<!-- Page -->
+<div class="container-fluid" id="home">
+
+    <!-- Inputs -->
+    <div class="row">
+
+        <!-- Airport -->
+        <div class="control-section" style="padding-left: 50px;">  
+            <div class="col-lg-9  content-wrapper" style="height: 200px">
+                <div>
+                    Select an airport:
+                </div> 
+                <div style="margin: 0px auto; width:250px; padding-top: 0px;">
+                    <ejs-dropdownlist id='airports' #sample [dataSource]='airportsData' (change)='onChange($event)' [value]='value' [fields]='fields' [placeholder]='waterMark' [popupHeight]='height'></ejs-dropdownlist>
+                </div>
+            </div>
+            <div class="col-lg-9 property-section">
+                <div class="property-panel-section">
+                    <div class="property-panel-header">Airport Selected</div>
+                    <div class="property-panel-content">
+                        <table id="property" title="Properties" style="width: 100%; margin:10px">
+                            <tr>
+                                <td style="padding:5px; width:25%">ICAO Code</td>
+                                <td>:<span id='value' style='padding-left:10px'></span></td>
+                            </tr>
+                            <tr>
+                                <td style="padding:5px; width:25%">Name</td>
+                                <td>:<span id='text' style='padding-left:10px'></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Date picker: Begin Date -->
+        <div class="control-section" style="overflow:auto;padding-left:150px">
+            <div>
+                Select an initial date:
+            </div>   
+            <div id="control_wrapper">
+                <div id="container" style="overflow:auto;padding-left:0px">
+                    <ejs-calendar (change)='onValueChangeBegin($event)'></ejs-calendar>
+                    <span id="selectedBegin">Selected Value: </span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Date picker: End Date -->
+        <div class="control-section" style="overflow:auto;padding-left:150px">
+            <div>
+                Select a final date:
+            </div>  
+            <div id="control_wrapper">
+                <div id="container" style="overflow:auto;padding-left:0px">
+                    <ejs-calendar [min]='minDate' [max]='maxDate' (change)='onValueChangeEnd($event)'></ejs-calendar>
+                    <span id="selectedEnd">Selected Value: </span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Results -->
+    <div class="row">
+
+        <!-- Table -->
+        <div class="control-section" style="padding-top: 50px;">
+            <ejs-toolbar class='e-gridlist' (clicked)="onClicked($event.originalEvent)">
+                <e-items>
+                    <e-item text='Departure Airport'></e-item>
+                    <e-item text='Callsign'></e-item>
+                    <e-item text='Departure Airport Distance'></e-item>
+                </e-items>
+            </ejs-toolbar>
+            <ejs-grid #grid (dataBound)="dataBound()" class="sortingenabled" [nbSpinner]="loadingTable" [dataSource]='arrivals' allowPaging='true' allowSorting='true' [pageSettings]='pageSettings'>
+                <e-columns>
+                    <e-column field='departureAirport' headerText='Departure Airport' textAlign='Center'></e-column>
+                    <e-column field='callsign' headerText='Callsign' textAlign='Center'></e-column>
+                    <e-column field='departureAirportHorDistance' headerText='Departure Airport Distance' textAlign='Center'></e-column>
+                </e-columns>
+            </ejs-grid>
+
+        </div>
+        
+    </div>
+
+    <!-- Maps -->
+    <div class="row">
+
+        <div class="control-section" style="padding-top: 50px; padding-left: 300px;">
+
+            <div >
+                <ejs-maps id='container' style="display:block;" [zoomSettings]='zoomSettings' [layers]='layers' 
+                    [legendSettings]="legendSettings" [titleSettings] = "titleSettings"
+                    (load)="load($event)">
+                </ejs-maps>
+            </div>
+        
+        </div>
+    
+    </div>
+
+<!-- Page End  -->
+</div>
