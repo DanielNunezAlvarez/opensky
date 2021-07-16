@@ -1,13 +1,13 @@
 {
     "airports": [
-        {"id": "2434", "code": "EGLL", "name": "London Heathrow Airport", "latitude": "514706", "longitude": "-0.461941"},
-        {"id": "3632", "code": "KLAX", "name": "Los Angeles International Airport", "latitude": "33942501", "longitude": "-118407997"},
-        {"id": "3754", "code": "KORD", "name": "Chicago O'Hare International Airport", "latitude": "419786", "longitude": "-879048"},
-        {"id": "3622", "code": "KJFK", "name": "John F Kennedy International Airport", "latitude": "40639801", "longitude": "-737789"},
-        {"id": "3384", "code": "KATL", "name": "Hartsfield Jackson Atlanta International Airport", "latitude": "336367", "longitude": "-84428101"},
-        {"id": "3878", "code": "KSFO", "name": "San Francisco International Airport", "latitude": "3761899948120110", "longitude": "-122375"},
-        {"id": "2513", "code": "EHAM", "name": "Amsterdam Airport Schiphol", "latitude": "52308601", "longitude": "476389"},
-        {"id": "4185", "code": "LFPG", "name": "Charles de Gaulle International Airport", "latitude": "49012798", "longitude": "2.55"}               
- 
+        {"code": "EGLL", "name": "London Heathrow Airport"},
+        {"code": "KLAX", "name": "Los Angeles International Airport"},
+        {"code": "EHAM", "name": "Amsterdam Airport Schiphol"},
+        {"code": "LFPG", "name": "Charles de Gaulle International Airport"},
+        {"code": "EDDF", "name": "Frankfurt am Main Airport"},
+        {"code": "EDDM", "name": "Munich Airport"},
+        {"code": "LEBL", "name": "Barcelona International Airport"},
+        {"code": "YSSY", "name": "Sydney Kingsford Smith International Airport"},
+        {"code": "LHBP", "name": "Budapest Liszt Ferenc International Airport"}
     ]
 }
