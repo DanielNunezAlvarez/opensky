@@ -1,6 +1,6 @@
 # opensky-challenge
 
-This project deploys a full-stack application that reads from the Opensky Network API and visualize it in a web user interface.
+This project deploys a full-stack application that reads data from the Opensky Network API and visualize it in a web user interface.
 
 ## Deploy with Docker
 
