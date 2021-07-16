@@ -94,13 +94,14 @@ export class HomeComponent {
       text.innerHTML = this.listObj.text;
 
       this.airport = this.listObj.value.toString();
-    
-      this.airportFlag = true;
-    
-//       if (this.airportFlag == true && this.beginFlag == true && this.endFlag == true){
-        this.getOpenskyStatistics(this.airport, this.begin, this.end)
-//       }
-    
+   
+      this.getOpenskyStatistics(this.airport, this.begin, this.end)
+
+//     this.airportFlag = true;
+
+//     if (this.airportFlag == true && this.beginFlag == true && this.endFlag == true){
+//       this.getOpenskyStatistics(this.airport, this.begin, this.end)
+//     }
     
   }
 
