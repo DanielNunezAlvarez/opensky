@@ -17,6 +17,7 @@ import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 import { ButtonModule, CheckBoxModule, RadioButtonModule, SwitchModule } from '@syncfusion/ej2-angular-buttons';
 import { ToolbarModule } from '@syncfusion/ej2-angular-navigations';
 import { MapsAllModule } from '@syncfusion/ej2-angular-maps';
+import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { MapsAllModule } from '@syncfusion/ej2-angular-maps';
     SwitchModule,
     ToolbarModule,
     MapsAllModule,
+    DateTimePickerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
