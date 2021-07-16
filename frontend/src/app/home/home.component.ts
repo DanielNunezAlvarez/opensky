@@ -44,6 +44,7 @@ export class HomeComponent {
 //   public maxBeginDate: Date = new Date();
 //   public minEndDate: Date = new Date();
 //   public maxEndDate: Date = new Date();
+//   public format: string = 'DD/MM/YYYY HH:mm:ss';
   
 //   New triple check flag
 //   public airportFlag: boolean = false;
