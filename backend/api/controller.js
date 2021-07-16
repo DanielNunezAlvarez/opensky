@@ -1,3 +1,5 @@
+//Definition of the controller
+
 'user strict';
 
 const arrivals = require('../services/arrivals');
