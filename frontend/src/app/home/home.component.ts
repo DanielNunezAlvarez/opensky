@@ -37,6 +37,19 @@ export class HomeComponent {
   public pageSettings: Object;
   public minDate: Object = new Date();
   public maxDate: Object = new Date();
+  public today: Date = new Date();
+
+  
+//   New time picker
+//   public maxBeginDate: Date = new Date();
+//   public minEndDate: Date = new Date();
+//   public maxEndDate: Date = new Date();
+  
+//   New triple check flag
+//   public airportFlag: boolean = false;
+//   public beginFlag: boolean = false;
+//   public endFlag: boolean = false;
+  
   public flag: boolean = false;
 
   //Execute on init
@@ -81,9 +94,14 @@ export class HomeComponent {
       text.innerHTML = this.listObj.text;
 
       this.airport = this.listObj.value.toString();
-
-      this.getOpenskyStatistics(this.airport, this.begin, this.end)
-
+    
+      this.airportFlag = true;
+    
+//       if (this.airportFlag == true && this.beginFlag == true && this.endFlag == true){
+        this.getOpenskyStatistics(this.airport, this.begin, this.end)
+//       }
+    
+    
   }
 
   // --- API Request ---
@@ -124,6 +142,42 @@ export class HomeComponent {
 
     this.getOpenskyStatistics(this.airport, this.begin, this.end)
 
+    //For date time picker
+//     let inputBegin: Element = document.getElementById('selectedBegin');
+//     inputBegin.innerHTML = 'Selected Value: ' + args.value.toLocaleDateString();
+    
+//     this.minEndDate = new Date(args.value)
+    
+//     let maxEndDateAux = new Date(args.value)
+   
+//     maxEndDateAux.setDate(maxEndDateAux.getDate()+7);
+    
+//     if (maxEndDateAux>this.today) {
+//       this.maxEndDate = this.today
+//     }
+//     else {
+//       this.maxEndDate = maxBeginDateAux
+//     }
+  
+//     let dayBegin = (args.value.getDate().toString())
+//     let monthBegin = (args.value.getMonth()+1).toString()
+//     let yearBegin = args.value.getFullYear().toString()
+//     let hourBegin = args.value.getHours().toString()
+//     let minuteBegin = args.value.getMinutes().toString()
+//     let secondBegin = args.value.getSeconds().toString()
+    
+//     let dateBegin = yearBegin+" "+monthBegin+" "+dayBegin+" "+hourBegin+":"+minuteBegin+":"+secondBegin
+    
+//     let datumBegin = Date.parse(dateBegin.toString())/1000
+    
+//     this.begin = datumBegin.toString();
+
+//     this.beginFlag = true;
+
+//     if (this.airportFlag == true && this.beginFlag == true && this.endFlag == true){
+//       this.getOpenskyStatistics(this.airport, this.begin, this.end)
+//     }
+    
   }
 
   //Function to execute when a begin date is selected
@@ -143,6 +197,31 @@ export class HomeComponent {
 
     this.getOpenskyStatistics(this.airport, this.begin, this.end)
 
+    
+    //For date time picker
+//     let inputEnd: Element = document.getElementById('selectedEnd');
+//     inputEnd.innerHTML = 'Selected Value: ' + args.value.toLocaleDateString();
+  
+//     let dayEnd = (args.value.getDate().toString())
+//     let monthEnd = (args.value.getMonth()+1).toString()
+//     let yearEnd = args.value.getFullYear().toString()
+//     let hourEnd = args.value.getHours().toString()
+//     let minuteEnd = args.value.getMinutes().toString()
+//     let secondEnd = args.value.getSeconds().toString()
+    
+//     let dateEnd = yearEnd+" "+monthEnd+" "+dayEnd+" "+hourEnd+":"+minuteEnd+":"+secondEnd
+    
+//     let datumEnd = Date.parse(dateEnd.toString())/1000
+    
+//     this.end = datumEnd.toString();
+
+//     this.endFlag = true;
+
+//     if (this.airportFlag == true && this.beginFlag == true && this.endFlag == true){
+//       this.getOpenskyStatistics(this.airport, this.begin, this.end)
+//     }
+    
+    
   }
   
   //--- Results table ---
