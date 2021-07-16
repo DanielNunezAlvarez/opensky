@@ -1,3 +1,5 @@
+//Definition of the routes
+
 'use strict';
 
 const controller = require("./controller");
