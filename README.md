@@ -1,4 +1,4 @@
-# opensky-challenge
+# opensky
 
 This project deploys a full-stack application that reads data from the Opensky Network API and visualize it in a web user interface.
 
