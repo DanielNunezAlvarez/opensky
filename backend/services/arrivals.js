@@ -1,4 +1,7 @@
+//Definition of the services
+
 'user strict';
+
 const { json } = require('body-parser');
 const request = require('request')
 
