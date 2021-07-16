@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "repository": "",
-  "author": "",
+  "author": "Daniel Núñez Álvarez",
   "license": "MIT",
   "scripts": {
     "test": "exit 0",
