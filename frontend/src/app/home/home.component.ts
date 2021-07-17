@@ -91,7 +91,7 @@ export class HomeComponent {
     
 //       this.arrivalLocation = []
     
-      this.maps.layers[1].markerSettings.dataSource = [];
+      this.maps.layers[0].markerSettings[1].dataSource = [];
    
 //       this.getOpenskyStatistics(this.airport, this.begin, this.end)
 
