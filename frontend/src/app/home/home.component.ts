@@ -133,7 +133,7 @@ export class HomeComponent {
 //       },
 //       ],
       
-      this.maps.layers[0] = {};
+      this.layers[0] = {};
       this.maps.refresh();
    
 //       this.getOpenskyStatistics(this.airport, this.begin, this.end)
