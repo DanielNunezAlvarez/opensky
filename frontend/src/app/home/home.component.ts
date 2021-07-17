@@ -373,31 +373,32 @@ export class HomeComponent {
     }];
 
 
-    markerChangeHandler = (args: CheckBoxChangeEvents) => {
-        this.markerCheckedState = args.checked;
-        if (args.checked) {
-            this.disableShapeBox = false;
-        } else {
-            this.disableShapeBox = true;
-        }
-    };
-    lineChangeHandler = (args: CheckBoxChangeEvents) => {
-        this.lineCheckedState = args.checked;
-        if (args.checked) {
-            this.disableConnectLineCheckbox = this.disableLineWidthTextBox = !args.checked;
-        }
-        else {
-            this.disableConnectLineCheckbox = this.disableLineWidthTextBox = !args.checked;
-            this.connectLineCheckedState = args.checked;
-        }
-    }
-    connectionLineChangeHandler = (args: CheckBoxChangeEvents) => {
-        this.connectLineCheckedState = args.checked;
-        if (!args.checked) {
-            this.emptySavedLinePositions();
-        }
+//     markerChangeHandler = (args: CheckBoxChangeEvents) => {
+//         this.markerCheckedState = args.checked;
+//         if (args.checked) {
+//             this.disableShapeBox = false;
+//         } else {
+//             this.disableShapeBox = true;
+//         }
+//     };
+//     lineChangeHandler = (args: CheckBoxChangeEvents) => {
+//         this.lineCheckedState = args.checked;
+//         if (args.checked) {
+//             this.disableConnectLineCheckbox = this.disableLineWidthTextBox = !args.checked;
+//         }
+//         else {
+//             this.disableConnectLineCheckbox = this.disableLineWidthTextBox = !args.checked;
+//             this.connectLineCheckedState = args.checked;
+//         }
+//     }
+//     connectionLineChangeHandler = (args: CheckBoxChangeEvents) => {
+//         this.connectLineCheckedState = args.checked;
+//         if (!args.checked) {
+//             this.emptySavedLinePositions();
+//         }
 
-    }
+//     }
+  
     clearItems = () => {
         this.maps.layers[0].markerSettings = [];
         this.maps.layers[0].navigationLineSettings = [];
@@ -411,19 +412,19 @@ export class HomeComponent {
         if (this.markerCheckedState && args['path'][1].id.indexOf('_Zooming_') == -1) {
             this.addMarker(args);
         }
-        if (this.lineCheckedState && !this.connectLineCheckedState) {
-            this.addLine(args, this.lineWidth);
-        }
-        if (this.connectLineCheckedState) {
-            this.addLine(args, this.lineWidth, true);
-        }
-        if (this.markerCheckedState || this.lineCheckedState || this.connectLineCheckedState) {
-            this.maps.refresh();
-            if (this.disableButton && (this.maps.layers[0].markerSettings.length ||
-            this.maps.layers[0].navigationLineSettings.length)) {
-                this.disableButton = false;
-            }
-        }
+//         if (this.lineCheckedState && !this.connectLineCheckedState) {
+//             this.addLine(args, this.lineWidth);
+//         }
+//         if (this.connectLineCheckedState) {
+//             this.addLine(args, this.lineWidth, true);
+//         }
+//         if (this.markerCheckedState || this.lineCheckedState || this.connectLineCheckedState) {
+//             this.maps.refresh();
+//             if (this.disableButton && (this.maps.layers[0].markerSettings.length ||
+//             this.maps.layers[0].navigationLineSettings.length)) {
+//                 this.disableButton = false;
+//             }
+//         }
     }
 
     public emptySavedLinePositions: any = () => {
