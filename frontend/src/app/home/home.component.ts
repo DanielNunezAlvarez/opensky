@@ -86,7 +86,7 @@ export class HomeComponent {
 
       this.airport = this.listObj.value.toString();
     
-      this.arrivalLocation[0] = airportsDatabase[this.airport]
+      this.arrivalLocation = [{ latitude: 151.5326602, longitude: -50.1262422, name: 'Test' }]
    
 //       this.getOpenskyStatistics(this.airport, this.begin, this.end)
 
