@@ -137,6 +137,14 @@ export class HomeComponent {
 //       this.maps.refresh();
    
 //       this.getOpenskyStatistics(this.airport, this.begin, this.end)
+    
+        this.maps.layers[0].markerSettings = [];
+        this.maps.layers[0].navigationLineSettings = [];
+        this.navigationLines = [];
+        this.emptySavedLinePositions();
+        this.maps.refresh();
+        this.disableButton = true;
+
 
     this.airportFlag = true;
 
