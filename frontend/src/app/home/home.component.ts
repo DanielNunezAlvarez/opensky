@@ -183,27 +183,6 @@ export class HomeComponent {
   //Function to execute when a begin date is selected
   public onValueChangeBegin(args: any):void {
     
-//     let inputBegin: Element = document.getElementById('selectedBegin');
-//     inputBegin.innerHTML = 'Selected Value: ' + args.value.toLocaleDateString();
-
-//     this.minDate = new Date(args.value)
-//     let maxAux = new Date(args.value)
-//     maxAux.setDate(maxAux.getDate()+7);
-//     this.maxDate = maxAux
-//     let dayBegin = (args.value.getDate().toString())
-//     let monthBegin = (args.value.getMonth()+1).toString()
-//     let yearBegin = args.value.getFullYear().toString()
-
-//     let dateBegin = yearBegin+" "+monthBegin+" "+dayBegin+" 00:00:00"
-
-//     let datumBegin = Date.parse(dateBegin.toString())/1000
-    
-//     this.begin = datumBegin.toString();
-
-//     this.getOpenskyStatistics(this.airport, this.begin, this.end)
-
-//     For date time picker
-    
     let inputBegin: Element = document.getElementById('selectedBegin');
     inputBegin.innerHTML = 'Selected Value: ' + args.value.toLocaleDateString();
     
@@ -242,26 +221,8 @@ export class HomeComponent {
   }
 
   //Function to execute when a begin date is selected
-  public onValueChangeEnd(args: any):void {
+  public onValueChangeEnd(args: any):void {   
     
-    
-//     let inputEnd: Element = document.getElementById('selectedEnd');
-//     inputEnd.innerHTML = 'Selected Value: ' + args.value.toLocaleDateString();
-
-//     let dayEnd = (args.value.getDate().toString())
-//     let monthEnd = (args.value.getMonth()+1).toString()
-//     let yearEnd = args.value.getFullYear().toString()
-
-//     let dateEnd = yearEnd+" "+monthEnd+" "+dayEnd+" 00:00:00"
-
-//     let datumEnd = Date.parse(dateEnd.toString())/1000
-    
-//     this.end = datumEnd.toString();
-
-//     this.getOpenskyStatistics(this.airport, this.begin, this.end)
-
-    
-    //For date time picker
     let inputEnd: Element = document.getElementById('selectedEnd');
     inputEnd.innerHTML = 'Selected Value: ' + args.value.toLocaleDateString();
   
@@ -322,47 +283,22 @@ export class HomeComponent {
   }
 
 
-
   // --- Maps ----
 
-//   titleSettings: object = {
-//     text: 'Airports Location',
-//     textStyle: {
-//         size: '16px'
-//     }
-//   };
-//   public zoomSettings: object = {
-//       enable: false
-//   };
 //   public legendSettings: object = { visible: true };
 
-//   public layers: object[] = [{
-//       shapeData: worldMap,
-//       shapePropertyPath: 'continent',
-//       shapeDataPath: 'continent', 
-//       shapeSettings: { colorValuePath: 'color', }, 
-//   },
-
-// ];
-//   // custom code start
-//   public load = (args: ILoadEventArgs) => {
-//       let theme: string = location.hash.split('/')[1];
-//       theme = theme ? theme : 'Material';
-//       args.maps.theme = <MapsTheme>(theme.charAt(0).toUpperCase() + theme.slice(1));
-//   }
-
-      public markerCheckedState: boolean = true;
-    public lineCheckedState: boolean = false;
-    public connectLineCheckedState: boolean = false;
-    public navigationLines: Object[] = [];
-    public latitude: number[] = [];
-    public longitude: number[] = [];
-    public lineWidth: number = 1;
-    public disableLineWidthTextBox: boolean = true;
-    public disableConnectLineCheckbox: boolean = true;
-    public disableButton: boolean = true;
-    public disableShapeBox: boolean = false;
-    public markerShape: string = "Image";
+//     public markerCheckedState: boolean = true;
+//     public lineCheckedState: boolean = false;
+//     public connectLineCheckedState: boolean = false;
+//     public navigationLines: Object[] = [];
+//     public latitude: number[] = [];
+//     public longitude: number[] = [];
+//     public lineWidth: number = 1;
+//     public disableLineWidthTextBox: boolean = true;
+//     public disableConnectLineCheckbox: boolean = true;
+//     public disableButton: boolean = true;
+//     public disableShapeBox: boolean = false;
+//     public markerShape: string = "Image";
 
     @ViewChild('maps')
     public maps: Maps;
@@ -382,110 +318,56 @@ export class HomeComponent {
     }];
 
 
-//     markerChangeHandler = (args: CheckBoxChangeEvents) => {
-//         this.markerCheckedState = args.checked;
-//         if (args.checked) {
-//             this.disableShapeBox = false;
-//         } else {
-//             this.disableShapeBox = true;
+//     public emptySavedLinePositions: any = () => {
+//         this.latitude = [];
+//         this.longitude = [];
+//     };
+//     public addMarker: any = (args: any) => {
+//         if (args['latitude'] !== null && args['longitude'] !== null) {
+//             let layerIndex: number = 0;
+//             let geo = this.maps.getTileGeoLocation(args.layerX, args.layerY);
+//             args['latitude'] = geo['latitude'];
+//             args['longitude'] = geo['longitude'];
+//             let marker: MarkerSettingsModel[];
+//             let dynamicMarker: MarkerSettingsModel[] = this.maps.layersCollection[layerIndex].markerSettings;
+//             dynamicMarker.push(new MarkerSettings(this.maps, 'markerSettings', marker));
+//             let markerIndex: number = dynamicMarker.length - 1;
+//             dynamicMarker[markerIndex].visible = true;
+//             dynamicMarker[markerIndex].dataSource = [
+//                 { latitude: args['latitude'], longitude: args['longitude'], name: 'dynamicmarker' }
+//             ];
+//             dynamicMarker[markerIndex].animationDuration = 0;
+//             dynamicMarker[markerIndex].fill = '#DB4537';
+//             dynamicMarker[markerIndex].shape = (this.markerShape !== 'Image') ? this.markerShape as MarkerType : 'Image';
+//             dynamicMarker[markerIndex].height = (this.markerShape !== 'Image') ? 12 : 20;
+//             dynamicMarker[markerIndex].width = (this.markerShape !== 'Image') ? 12 : 20;
+//             dynamicMarker[markerIndex].imageUrl = (this.markerShape !== 'Image') ? '' : './assets/maps/images/ballon.png';
 //         }
 //     };
-//     lineChangeHandler = (args: CheckBoxChangeEvents) => {
-//         this.lineCheckedState = args.checked;
-//         if (args.checked) {
-//             this.disableConnectLineCheckbox = this.disableLineWidthTextBox = !args.checked;
+//     public addLine: any = (lineArgs: any, lineWidth: number, connectiveLine?: boolean) => {
+//         let geo = this.maps.getTileGeoLocation(lineArgs.layerX, lineArgs.layerY);
+//         lineArgs['latitude'] = geo['latitude'];
+//         lineArgs['longitude'] = geo['longitude'];
+//         if (lineArgs.latitude != null && lineArgs.longitude != null) {
+//             this.latitude.push(lineArgs.latitude);
+//             this.longitude.push(lineArgs.longitude);
 //         }
-//         else {
-//             this.disableConnectLineCheckbox = this.disableLineWidthTextBox = !args.checked;
-//             this.connectLineCheckedState = args.checked;
-//         }
-//     }
-//     connectionLineChangeHandler = (args: CheckBoxChangeEvents) => {
-//         this.connectLineCheckedState = args.checked;
-//         if (!args.checked) {
-//             this.emptySavedLinePositions();
-//         }
-
-//     }
-  
-    clearItems = () => {
-        this.maps.layers[0].markerSettings = [];
-        this.maps.layers[0].navigationLineSettings = [];
-        this.navigationLines = [];
-        this.emptySavedLinePositions();
-        this.maps.refresh();
-        this.disableButton = true;
-    }
-
-    public mapClicked = (args: any) => {
-        if (this.markerCheckedState && args['path'][1].id.indexOf('_Zooming_') == -1) {
-            this.addMarker(args);
-        }
-//         if (this.lineCheckedState && !this.connectLineCheckedState) {
-//             this.addLine(args, this.lineWidth);
-//         }
-//         if (this.connectLineCheckedState) {
-//             this.addLine(args, this.lineWidth, true);
-//         }
-//         if (this.markerCheckedState || this.lineCheckedState || this.connectLineCheckedState) {
-//             this.maps.refresh();
-//             if (this.disableButton && (this.maps.layers[0].markerSettings.length ||
-//             this.maps.layers[0].navigationLineSettings.length)) {
-//                 this.disableButton = false;
+//         if (this.latitude.length >= 2) {
+//             this.navigationLines.push({
+//                 'visible': true,
+//                 'latitude': [this.latitude[(this.latitude.length - 2)], this.latitude[(this.latitude.length - 1)]],
+//                 'longitude': [this.longitude[(this.longitude.length - 2)], this.longitude[(this.longitude.length - 1)]],
+//                 'angle': 0,
+//                 'color': 'blue',
+//                 'width': (lineWidth > 5) ? 5 : (((5 >= lineWidth) && (lineWidth >= 1)) ? lineWidth : 1)
+//             });
+//             this.maps.layers[0].navigationLineSettings = this.navigationLines;
+//             if (!connectiveLine) {
+//                 this.emptySavedLinePositions();
 //             }
 //         }
-    }
-
-    public emptySavedLinePositions: any = () => {
-        this.latitude = [];
-        this.longitude = [];
-    };
-    public addMarker: any = (args: any) => {
-        if (args['latitude'] !== null && args['longitude'] !== null) {
-            let layerIndex: number = 0;
-            let geo = this.maps.getTileGeoLocation(args.layerX, args.layerY);
-            args['latitude'] = geo['latitude'];
-            args['longitude'] = geo['longitude'];
-            let marker: MarkerSettingsModel[];
-            let dynamicMarker: MarkerSettingsModel[] = this.maps.layersCollection[layerIndex].markerSettings;
-            dynamicMarker.push(new MarkerSettings(this.maps, 'markerSettings', marker));
-            let markerIndex: number = dynamicMarker.length - 1;
-            dynamicMarker[markerIndex].visible = true;
-            dynamicMarker[markerIndex].dataSource = [
-                { latitude: args['latitude'], longitude: args['longitude'], name: 'dynamicmarker' }
-            ];
-            dynamicMarker[markerIndex].animationDuration = 0;
-            dynamicMarker[markerIndex].fill = '#DB4537';
-            dynamicMarker[markerIndex].shape = (this.markerShape !== 'Image') ? this.markerShape as MarkerType : 'Image';
-            dynamicMarker[markerIndex].height = (this.markerShape !== 'Image') ? 12 : 20;
-            dynamicMarker[markerIndex].width = (this.markerShape !== 'Image') ? 12 : 20;
-            dynamicMarker[markerIndex].imageUrl = (this.markerShape !== 'Image') ? '' : './assets/maps/images/ballon.png';
-        }
-    };
-    public addLine: any = (lineArgs: any, lineWidth: number, connectiveLine?: boolean) => {
-        let geo = this.maps.getTileGeoLocation(lineArgs.layerX, lineArgs.layerY);
-        lineArgs['latitude'] = geo['latitude'];
-        lineArgs['longitude'] = geo['longitude'];
-        if (lineArgs.latitude != null && lineArgs.longitude != null) {
-            this.latitude.push(lineArgs.latitude);
-            this.longitude.push(lineArgs.longitude);
-        }
-        if (this.latitude.length >= 2) {
-            this.navigationLines.push({
-                'visible': true,
-                'latitude': [this.latitude[(this.latitude.length - 2)], this.latitude[(this.latitude.length - 1)]],
-                'longitude': [this.longitude[(this.longitude.length - 2)], this.longitude[(this.longitude.length - 1)]],
-                'angle': 0,
-                'color': 'blue',
-                'width': (lineWidth > 5) ? 5 : (((5 >= lineWidth) && (lineWidth >= 1)) ? lineWidth : 1)
-            });
-            this.maps.layers[0].navigationLineSettings = this.navigationLines;
-            if (!connectiveLine) {
-                this.emptySavedLinePositions();
-            }
-        }
-    }
-    public markerShapeData: string[] = ['Image', 'Circle', 'Diamond', 'Star', 'Triangle'];
+//     }
+//     public markerShapeData: string[] = ['Image', 'Circle', 'Diamond', 'Star', 'Triangle'];
   
   
   
