@@ -34,13 +34,11 @@ export class HomeComponent {
   public airport: string = 'EDDM';
   public begin: string = '1517227200';
   public end: string = '1517230800';
-  public arrivalLocation: [];
+  public arrivalLocation: [] = airportDatabase['EDDM'];
   public loadingTable = false;
   public pageSettings: Object;
   public today: Date = new Date();
-  
-  arrivalLocation[0] = airportsDatabase['EDDM'];
-  
+
 //   New time picker
   public maxBeginDate: Date = new Date();
   public minEndDate: Date = new Date();
