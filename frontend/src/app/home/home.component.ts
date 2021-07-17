@@ -41,15 +41,15 @@ export class HomeComponent {
 
   
 //   New time picker
-//   public maxBeginDate: Date = new Date();
-//   public minEndDate: Date = new Date();
-//   public maxEndDate: Date = new Date();
-//   public format: string = 'DD/MM/YYYY HH:mm:ss';
+  public maxBeginDate: Date = new Date();
+  public minEndDate: Date = new Date();
+  public maxEndDate: Date = new Date();
+  public format: string = 'DD/MM/YYYY HH:mm:ss';
   
 //   New triple check flag
-//   public airportFlag: boolean = false;
-//   public beginFlag: boolean = false;
-//   public endFlag: boolean = false;
+  public airportFlag: boolean = false;
+  public beginFlag: boolean = false;
+  public endFlag: boolean = false;
   
   public flag: boolean = false;
 
@@ -63,15 +63,6 @@ export class HomeComponent {
   public listObj: DropDownListComponent;
  
   //Define the airport data
-  // public airportsData: Object[] = [
-  //   { Id: 'LEMD', Airport: 'Aeropuerto Madrid Barajas' },
-  //   { Id: 'KDEN', Airport: 'Denver International Airport' },
-  //   { Id: 'KLAX', Airport: 'Los Angeles International Airport' },
-  //   { Id: 'EEDF', Airport: 'Frankfurt Airport' },
-  //   { Id: 'EGKK', Airport: 'London Gatwick Airport' },
-  //   { Id: 'EDDM', Airport: 'Munich International Airport' }
-  // ];
-
   public airportsData: Object[] = worldAirports['airports']
 
   //Maps the appropriate column to fields property
@@ -96,13 +87,13 @@ export class HomeComponent {
 
       this.airport = this.listObj.value.toString();
    
-      this.getOpenskyStatistics(this.airport, this.begin, this.end)
-
-//     this.airportFlag = true;
-
-//     if (this.airportFlag == true && this.beginFlag == true && this.endFlag == true){
 //       this.getOpenskyStatistics(this.airport, this.begin, this.end)
-//     }
+
+    this.airportFlag = true;
+
+    if (this.airportFlag == true && this.beginFlag == true && this.endFlag == true){
+      this.getOpenskyStatistics(this.airport, this.begin, this.end)
+    }
     
   }
 
@@ -125,103 +116,106 @@ export class HomeComponent {
 
   //Function to execute when a begin date is selected
   public onValueChangeBegin(args: any):void {
-    let inputBegin: Element = document.getElementById('selectedBegin');
-    inputBegin.innerHTML = 'Selected Value: ' + args.value.toLocaleDateString();
-
-    this.minDate = new Date(args.value)
-    let maxAux = new Date(args.value)
-    maxAux.setDate(maxAux.getDate()+7);
-    this.maxDate = maxAux
-    let dayBegin = (args.value.getDate().toString())
-    let monthBegin = (args.value.getMonth()+1).toString()
-    let yearBegin = args.value.getFullYear().toString()
-
-    let dateBegin = yearBegin+" "+monthBegin+" "+dayBegin+" 00:00:00"
-
-    let datumBegin = Date.parse(dateBegin.toString())/1000
     
-    this.begin = datumBegin.toString();
-
-    this.getOpenskyStatistics(this.airport, this.begin, this.end)
-
-    //For date time picker
 //     let inputBegin: Element = document.getElementById('selectedBegin');
 //     inputBegin.innerHTML = 'Selected Value: ' + args.value.toLocaleDateString();
-    
-//     this.minEndDate = new Date(args.value)
-    
-//     let maxEndDateAux = new Date(args.value)
-   
-//     maxEndDateAux.setDate(maxEndDateAux.getDate()+7);
-    
-//     if (maxEndDateAux>this.today) {
-//       this.maxEndDate = this.today
-//     }
-//     else {
-//       this.maxEndDate = maxBeginDateAux
-//     }
-  
+
+//     this.minDate = new Date(args.value)
+//     let maxAux = new Date(args.value)
+//     maxAux.setDate(maxAux.getDate()+7);
+//     this.maxDate = maxAux
 //     let dayBegin = (args.value.getDate().toString())
 //     let monthBegin = (args.value.getMonth()+1).toString()
 //     let yearBegin = args.value.getFullYear().toString()
-//     let hourBegin = args.value.getHours().toString()
-//     let minuteBegin = args.value.getMinutes().toString()
-//     let secondBegin = args.value.getSeconds().toString()
-    
-//     let dateBegin = yearBegin+" "+monthBegin+" "+dayBegin+" "+hourBegin+":"+minuteBegin+":"+secondBegin
-    
+
+//     let dateBegin = yearBegin+" "+monthBegin+" "+dayBegin+" 00:00:00"
+
 //     let datumBegin = Date.parse(dateBegin.toString())/1000
     
 //     this.begin = datumBegin.toString();
 
-//     this.beginFlag = true;
+//     this.getOpenskyStatistics(this.airport, this.begin, this.end)
 
-//     if (this.airportFlag == true && this.beginFlag == true && this.endFlag == true){
-//       this.getOpenskyStatistics(this.airport, this.begin, this.end)
-//     }
+    For date time picker
+    let inputBegin: Element = document.getElementById('selectedBegin');
+    inputBegin.innerHTML = 'Selected Value: ' + args.value.toLocaleDateString();
+    
+    this.minEndDate = new Date(args.value)
+    
+    let maxEndDateAux = new Date(args.value)
+   
+    maxEndDateAux.setDate(maxEndDateAux.getDate()+7);
+    
+    if (maxEndDateAux>this.today) {
+      this.maxEndDate = this.today
+    }
+    else {
+      this.maxEndDate = maxBeginDateAux
+    }
+  
+    let dayBegin = (args.value.getDate().toString())
+    let monthBegin = (args.value.getMonth()+1).toString()
+    let yearBegin = args.value.getFullYear().toString()
+    let hourBegin = args.value.getHours().toString()
+    let minuteBegin = args.value.getMinutes().toString()
+    let secondBegin = args.value.getSeconds().toString()
+    
+    let dateBegin = yearBegin+" "+monthBegin+" "+dayBegin+" "+hourBegin+":"+minuteBegin+":"+secondBegin
+    
+    let datumBegin = Date.parse(dateBegin.toString())/1000
+    
+    this.begin = datumBegin.toString();
+
+    this.beginFlag = true;
+
+    if (this.airportFlag == true && this.beginFlag == true && this.endFlag == true){
+      this.getOpenskyStatistics(this.airport, this.begin, this.end)
+    }
     
   }
 
   //Function to execute when a begin date is selected
   public onValueChangeEnd(args: any):void {
-    let inputEnd: Element = document.getElementById('selectedEnd');
-    inputEnd.innerHTML = 'Selected Value: ' + args.value.toLocaleDateString();
-
-    let dayEnd = (args.value.getDate().toString())
-    let monthEnd = (args.value.getMonth()+1).toString()
-    let yearEnd = args.value.getFullYear().toString()
-
-    let dateEnd = yearEnd+" "+monthEnd+" "+dayEnd+" 00:00:00"
-
-    let datumEnd = Date.parse(dateEnd.toString())/1000
     
-    this.end = datumEnd.toString();
-
-    this.getOpenskyStatistics(this.airport, this.begin, this.end)
-
     
-    //For date time picker
 //     let inputEnd: Element = document.getElementById('selectedEnd');
 //     inputEnd.innerHTML = 'Selected Value: ' + args.value.toLocaleDateString();
-  
+
 //     let dayEnd = (args.value.getDate().toString())
 //     let monthEnd = (args.value.getMonth()+1).toString()
 //     let yearEnd = args.value.getFullYear().toString()
-//     let hourEnd = args.value.getHours().toString()
-//     let minuteEnd = args.value.getMinutes().toString()
-//     let secondEnd = args.value.getSeconds().toString()
-    
-//     let dateEnd = yearEnd+" "+monthEnd+" "+dayEnd+" "+hourEnd+":"+minuteEnd+":"+secondEnd
-    
+
+//     let dateEnd = yearEnd+" "+monthEnd+" "+dayEnd+" 00:00:00"
+
 //     let datumEnd = Date.parse(dateEnd.toString())/1000
     
 //     this.end = datumEnd.toString();
 
-//     this.endFlag = true;
+//     this.getOpenskyStatistics(this.airport, this.begin, this.end)
 
-//     if (this.airportFlag == true && this.beginFlag == true && this.endFlag == true){
-//       this.getOpenskyStatistics(this.airport, this.begin, this.end)
-//     }
+    
+    //For date time picker
+    let inputEnd: Element = document.getElementById('selectedEnd');
+    inputEnd.innerHTML = 'Selected Value: ' + args.value.toLocaleDateString();
+  
+    let dayEnd = (args.value.getDate().toString())
+    let monthEnd = (args.value.getMonth()+1).toString()
+    let yearEnd = args.value.getFullYear().toString()
+    let hourEnd = args.value.getHours().toString()
+    let minuteEnd = args.value.getMinutes().toString()
+    let secondEnd = args.value.getSeconds().toString()
+    
+    let dateEnd = yearEnd+" "+monthEnd+" "+dayEnd+" "+hourEnd+":"+minuteEnd+":"+secondEnd
+    
+    let datumEnd = Date.parse(dateEnd.toString())/1000
+    
+    this.end = datumEnd.toString();
+
+    this.endFlag = true;
+
+    if (this.airportFlag == true && this.beginFlag == true && this.endFlag == true){
+      this.getOpenskyStatistics(this.airport, this.begin, this.end)
+    }
     
     
   }
