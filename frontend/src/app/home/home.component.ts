@@ -132,6 +132,8 @@ export class HomeComponent {
         animationDuration: 0 
       },
       ],
+      
+      this.maps.refresh();
    
 //       this.getOpenskyStatistics(this.airport, this.begin, this.end)
 
