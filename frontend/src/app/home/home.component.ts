@@ -34,7 +34,7 @@ export class HomeComponent {
   public airport: string = 'EDDM';
   public begin: string = '1517227200';
   public end: string = '1517230800';
-  public arrivalLocation: array = [{ latitude: 51.5326602, longitude: -0.1262422, name: 'London' }];
+  public arrivalLocation: array<any> = [{ latitude: 51.5326602, longitude: -0.1262422, name: 'London' }];
   public loadingTable = false;
   public pageSettings: Object;
   public today: Date = new Date();
