@@ -39,6 +39,8 @@ export class HomeComponent {
   public pageSettings: Object;
   public today: Date = new Date();
   
+  public arrivalLocation = this.airportsDatabase['EDDM'];
+  
 //   New time picker
   public maxBeginDate: Date = new Date();
   public minEndDate: Date = new Date();
