@@ -51,6 +51,9 @@ export class HomeComponent {
   public endFlag: boolean = false;
   
   public flag: boolean = false;
+  
+  @ViewChild('maps')
+  public maps: Maps;
 
   //Execute on init
   public ngOnInit(): void {
@@ -86,7 +89,9 @@ export class HomeComponent {
 
       this.airport = this.listObj.value.toString();
     
-      this.arrivalLocation = []
+//       this.arrivalLocation = []
+    
+      this.maps.layers[1].markerSettings.dataSource = [];
    
 //       this.getOpenskyStatistics(this.airport, this.begin, this.end)
 
