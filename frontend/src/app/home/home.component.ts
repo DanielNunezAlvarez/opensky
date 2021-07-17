@@ -91,7 +91,7 @@ export class HomeComponent {
     
 //       this.arrivalLocation = []
     
-      this.maps.layers[0].markerSettings[1].dataSource = [];
+      this.maps.layers[0].markerSettings = [];
    
 //       this.getOpenskyStatistics(this.airport, this.begin, this.end)
 
@@ -277,7 +277,6 @@ export class HomeComponent {
   public legendSettings: object = { visible: true };
 
   public layers: object[] = [{
-      layerType: 'OSM',
       shapeData: worldMap,
       shapePropertyPath: 'continent',
       shapeDataPath: 'continent', 
