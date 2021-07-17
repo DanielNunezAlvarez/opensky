@@ -34,7 +34,7 @@ export class HomeComponent {
   public airport: string = 'EDDM';
   public begin: string = '1517227200';
   public end: string = '1517230800';
-  public arrivalLocation: Array<any> = [{ latitude: 51.5326602, longitude: -0.1262422, name: 'London' }];
+  public arrivalLocation: Array<any> = [];
   public loadingTable = false;
   public pageSettings: Object;
   public today: Date = new Date();
@@ -88,8 +88,7 @@ export class HomeComponent {
       text.innerHTML = this.listObj.text;
 
       this.airport = this.listObj.value.toString();
-    
-//       this.arrivalLocation = []
+
     
 //     this.maps.layers[0].markerSettings= [{ 
 //           visible: true, 
@@ -137,13 +136,14 @@ export class HomeComponent {
 //       this.maps.refresh();
    
 //       this.getOpenskyStatistics(this.airport, this.begin, this.end)
-    
+        
+//         this.arrivalLocation = airportsDatabase[this.airport];
+        
+        this.arrivalLocation = [{ latitude: 37.6276571, longitude: -122.4276688, name: 'San Bruno' }]
         this.maps.layers[0].markerSettings = [
               { 
         visible: true, 
-        dataSource: [
-              { latitude: 37.6276571, longitude: -122.4276688, name: 'San Bruno' }, 
-          ], 
+        dataSource: this.arrivalLocation, 
         shape: 'Image', 
         imageUrl: './assets/images/arrivalPosition.jpg', 
         height: 20, width: 20,
