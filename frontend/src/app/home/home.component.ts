@@ -91,7 +91,7 @@ export class HomeComponent {
     
 //       this.arrivalLocation = []
     
-    this.maps.layers[0].markerSettings: [{ 
+    this.maps.layers[0].markerSettings= [{ 
           visible: true, 
           dataSource: [
               { latitude: 37.6276571, longitude: -122.4276688, name: 'San Bruno' }, 
