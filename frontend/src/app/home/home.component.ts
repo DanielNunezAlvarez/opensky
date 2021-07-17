@@ -139,7 +139,7 @@ export class HomeComponent {
         
 //         this.arrivalLocation = airportsDatabase[this.airport];
         
-        this.arrivalLocation[0] = { latitude: 37.6276571, longitude: -122.4276688, name: 'San Bruno' }
+        this.arrivalLocation[0] = airportsDatabase[this.airport];
         this.maps.layers[0].markerSettings = [
               { 
         visible: true, 
