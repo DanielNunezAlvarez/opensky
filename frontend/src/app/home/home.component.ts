@@ -34,12 +34,10 @@ export class HomeComponent {
   public airport: string = 'EDDM';
   public begin: string = '1517227200';
   public end: string = '1517230800';
+  public arrivalLocation: Object[];
   public loadingTable = false;
   public pageSettings: Object;
-  public minDate: Object = new Date();
-  public maxDate: Object = new Date();
   public today: Date = new Date();
-
   
 //   New time picker
   public maxBeginDate: Date = new Date();
@@ -87,6 +85,8 @@ export class HomeComponent {
       text.innerHTML = this.listObj.text;
 
       this.airport = this.listObj.value.toString();
+    
+      this.arrivalLocation = airportsDatabase[this.airport]
    
 //       this.getOpenskyStatistics(this.airport, this.begin, this.end)
 
@@ -298,9 +298,10 @@ export class HomeComponent {
       }, 
       { 
         visible: true, 
-        dataSource: [
-            { name: 'San Bruno', latitude: 50.6276571, longitude: -122.4276688 }, 
-        ], 
+        dataSource: this.arrivalLocation,
+//         dataSource: [
+//             { name: 'San Bruno', latitude: 50.6276571, longitude: -122.4276688 }, 
+//         ], 
         shape: 'Image', 
         imageUrl: './assets/images/arrivalPosition.jpg', 
         height: 20, width: 20,
