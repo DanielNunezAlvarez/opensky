@@ -136,7 +136,8 @@ export class HomeComponent {
 
 //     this.getOpenskyStatistics(this.airport, this.begin, this.end)
 
-    For date time picker
+//     For date time picker
+    
     let inputBegin: Element = document.getElementById('selectedBegin');
     inputBegin.innerHTML = 'Selected Value: ' + args.value.toLocaleDateString();
     
