@@ -35,6 +35,7 @@ export class HomeComponent {
   public begin: string = '1517227200';
   public end: string = '1517230800';
   public arrivalLocation: Array<any> = [];
+  public departureLocation: Array<any> = [];
   public loadingTable = false;
   public pageSettings: Object;
   public today: Date = new Date();
@@ -51,9 +52,6 @@ export class HomeComponent {
   public endFlag: boolean = false;
   
   public flag: boolean = false;
-  
-//   @ViewChild('maps')
-//   public maps: Maps;
 
   //Execute on init
   public ngOnInit(): void {
@@ -88,60 +86,10 @@ export class HomeComponent {
       text.innerHTML = this.listObj.text;
 
       this.airport = this.listObj.value.toString();
-
-    
-//     this.maps.layers[0].markerSettings= [{ 
-//           visible: true, 
-//           dataSource: [
-//               { latitude: 37.6276571, longitude: -122.4276688, name: 'San Bruno' }, 
-//               { latitude: 33.5302186, longitude: -117.7418381, name: 'Laguna Niguel' }, 
-//               { latitude: 40.7424509, longitude: -74.0081468, name: 'New York' }, 
-//               { latitude: -23.5268201, longitude: -46.6489927, name: 'Bom Retiro' }, 
-//               { latitude: 43.6533855, longitude: -79.3729994, name: 'Toronto' }, 
-//               { latitude: 48.8773406, longitude: 2.3299627, name: 'Paris' }, 
-//               { latitude: 52.4643089, longitude: 13.4107368, name: 'Berlin' }, 
-//               { latitude: 19.1555762, longitude: 72.8849595, name: 'Mumbai' }, 
-//               { latitude: 35.6628744, longitude: 139.7345469, name: 'Minato' }, 
-//               { latitude: 51.5326602, longitude: -0.1262422, name: 'London' }
-//           ], 
-//           shape: 'Image', 
-//           imageUrl: './assets/images/departurePosition.png', 
-//           height: 20, width: 20,
-//           tooltipSettings: { visible: true, valuePath: 'name' }, 
-//           animationDuration: 0 
-//       }, 
-//       { 
-//         visible: true, 
-//         dataSource: [
-//               { latitude: 37.6276571, longitude: -122.4276688, name: 'San Bruno' }, 
-//               { latitude: 33.5302186, longitude: -117.7418381, name: 'Laguna Niguel' }, 
-//               { latitude: 40.7424509, longitude: -74.0081468, name: 'New York' }, 
-//               { latitude: -23.5268201, longitude: -46.6489927, name: 'Bom Retiro' }, 
-//               { latitude: 43.6533855, longitude: -79.3729994, name: 'Toronto' }, 
-//               { latitude: 48.8773406, longitude: 2.3299627, name: 'Paris' }, 
-//               { latitude: 52.4643089, longitude: 13.4107368, name: 'Berlin' }, 
-//               { latitude: 19.1555762, longitude: 72.8849595, name: 'Mumbai' }, 
-//               { latitude: 35.6628744, longitude: 139.7345469, name: 'Minato' }, 
-//               { latitude: 51.5326602, longitude: -0.1262422, name: 'London' }
-//           ], 
-//         shape: 'Image', 
-//         imageUrl: './assets/images/arrivalPosition.jpg', 
-//         height: 20, width: 20,
-//         tooltipSettings: { visible: true, valuePath: 'name' }, 
-//         animationDuration: 0 
-//       },
-//       ],
-      
-//       this.layers[0] = {};
-//       this.maps.refresh();
-   
-//       this.getOpenskyStatistics(this.airport, this.begin, this.end)
-        
-//         this.arrivalLocation = airportsDatabase[this.airport];
         
         this.arrivalLocation[0] = airportsDatabase[this.airport];
         this.maps.layers[0].markerSettings = [
-              { 
+        { 
         visible: true, 
         dataSource: this.arrivalLocation, 
         shape: 'Image', 
@@ -149,8 +97,7 @@ export class HomeComponent {
         height: 20, width: 20,
         tooltipSettings: { visible: true, valuePath: 'name' }, 
         animationDuration: 0 
-      }
-        
+        }
         ];
 
         this.maps.refresh();
@@ -171,6 +118,8 @@ export class HomeComponent {
       this.arrivals = data['arrivals'];
       this.loadingTable = false;
     });
+    
+    this.departureAirportsLocation(this.arrivals)
   }
 
   // Function to make the API request
@@ -285,21 +234,6 @@ export class HomeComponent {
 
   // --- Maps ----
 
-//   public legendSettings: object = { visible: true };
-
-//     public markerCheckedState: boolean = true;
-//     public lineCheckedState: boolean = false;
-//     public connectLineCheckedState: boolean = false;
-//     public navigationLines: Object[] = [];
-//     public latitude: number[] = [];
-//     public longitude: number[] = [];
-//     public lineWidth: number = 1;
-//     public disableLineWidthTextBox: boolean = true;
-//     public disableConnectLineCheckbox: boolean = true;
-//     public disableButton: boolean = true;
-//     public disableShapeBox: boolean = false;
-//     public markerShape: string = "Image";
-
     @ViewChild('maps')
     public maps: Maps;
 
@@ -317,66 +251,30 @@ export class HomeComponent {
         layerType: 'OSM'
     }];
 
+    // Function to get departure airports location
+    departureAirportsLocation(arrivalsArray): void{
+      
+      let j = 0
+      for (let i = 0; i < arrivalsArray.length; i++) {
+        if (arrivalsArray.departureAirport!=null){
+          this.departureLocation[j] = airportsDatabase[arrivalsArray.departureAirport]
+          j = j+1
+        }
+      }
+      
+      this.maps.layers[0].markerSettings = [
+      { 
+      visible: true, 
+      dataSource: this.departureLocation, 
+      shape: 'Image', 
+      imageUrl: './assets/images/departurePosition.jpg', 
+      height: 20, width: 20,
+      tooltipSettings: { visible: true, valuePath: 'name' }, 
+      animationDuration: 0 
+      }
+      ];
+      
+    }
+  
 
-//     public emptySavedLinePositions: any = () => {
-//         this.latitude = [];
-//         this.longitude = [];
-//     };
-//     public addMarker: any = (args: any) => {
-//         if (args['latitude'] !== null && args['longitude'] !== null) {
-//             let layerIndex: number = 0;
-//             let geo = this.maps.getTileGeoLocation(args.layerX, args.layerY);
-//             args['latitude'] = geo['latitude'];
-//             args['longitude'] = geo['longitude'];
-//             let marker: MarkerSettingsModel[];
-//             let dynamicMarker: MarkerSettingsModel[] = this.maps.layersCollection[layerIndex].markerSettings;
-//             dynamicMarker.push(new MarkerSettings(this.maps, 'markerSettings', marker));
-//             let markerIndex: number = dynamicMarker.length - 1;
-//             dynamicMarker[markerIndex].visible = true;
-//             dynamicMarker[markerIndex].dataSource = [
-//                 { latitude: args['latitude'], longitude: args['longitude'], name: 'dynamicmarker' }
-//             ];
-//             dynamicMarker[markerIndex].animationDuration = 0;
-//             dynamicMarker[markerIndex].fill = '#DB4537';
-//             dynamicMarker[markerIndex].shape = (this.markerShape !== 'Image') ? this.markerShape as MarkerType : 'Image';
-//             dynamicMarker[markerIndex].height = (this.markerShape !== 'Image') ? 12 : 20;
-//             dynamicMarker[markerIndex].width = (this.markerShape !== 'Image') ? 12 : 20;
-//             dynamicMarker[markerIndex].imageUrl = (this.markerShape !== 'Image') ? '' : './assets/maps/images/ballon.png';
-//         }
-//     };
-//     public addLine: any = (lineArgs: any, lineWidth: number, connectiveLine?: boolean) => {
-//         let geo = this.maps.getTileGeoLocation(lineArgs.layerX, lineArgs.layerY);
-//         lineArgs['latitude'] = geo['latitude'];
-//         lineArgs['longitude'] = geo['longitude'];
-//         if (lineArgs.latitude != null && lineArgs.longitude != null) {
-//             this.latitude.push(lineArgs.latitude);
-//             this.longitude.push(lineArgs.longitude);
-//         }
-//         if (this.latitude.length >= 2) {
-//             this.navigationLines.push({
-//                 'visible': true,
-//                 'latitude': [this.latitude[(this.latitude.length - 2)], this.latitude[(this.latitude.length - 1)]],
-//                 'longitude': [this.longitude[(this.longitude.length - 2)], this.longitude[(this.longitude.length - 1)]],
-//                 'angle': 0,
-//                 'color': 'blue',
-//                 'width': (lineWidth > 5) ? 5 : (((5 >= lineWidth) && (lineWidth >= 1)) ? lineWidth : 1)
-//             });
-//             this.maps.layers[0].navigationLineSettings = this.navigationLines;
-//             if (!connectiveLine) {
-//                 this.emptySavedLinePositions();
-//             }
-//         }
-//     }
-//     public markerShapeData: string[] = ['Image', 'Circle', 'Diamond', 'Star', 'Triangle'];
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 }
