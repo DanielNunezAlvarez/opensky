@@ -86,7 +86,7 @@ export class HomeComponent {
 
       this.airport = this.listObj.value.toString();
     
-      this.arrivalLocation = airportsDatabase[this.airport]
+      this.arrivalLocation[0] = airportsDatabase[this.airport]
    
 //       this.getOpenskyStatistics(this.airport, this.begin, this.end)
 
