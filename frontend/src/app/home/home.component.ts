@@ -34,7 +34,7 @@ export class HomeComponent {
   public airport: string = 'EDDM';
   public begin: string = '1517227200';
   public end: string = '1517230800';
-  public arrivalLocation = airportsDatabase['EDDM'];
+  public arrivalLocation[0] = airportsDatabase['EDDM'];
   public loadingTable = false;
   public pageSettings: Object;
   public today: Date = new Date();
