@@ -15,6 +15,7 @@ import { addClass, removeClass } from '@syncfusion/ej2-base';
 import { MapsTheme, Maps, Legend, Marker, MapsTooltip, ILoadEventArgs } from '@syncfusion/ej2-angular-maps';
 import worldMap from './world-map.json';
 import worldAirports from './worldAirports.json'
+import airportsDatabase from './airportsDatabase.json'
 Maps.Inject(Legend, Marker, MapsTooltip);
 declare var require: any;
 
@@ -64,7 +65,7 @@ export class HomeComponent {
  
   //Define the airport data
   public airportsData: Object[] = worldAirports['airports']
-
+  
   //Maps the appropriate column to fields property
   public fields: Object = { text: 'name', value: 'code' };
 
@@ -298,7 +299,7 @@ export class HomeComponent {
       { 
         visible: true, 
         dataSource: [
-            { latitude: 50.6276571, longitude: -122.4276688, name: 'San Bruno' }, 
+            { name: 'San Bruno', latitude: 50.6276571, longitude: -122.4276688 }, 
         ], 
         shape: 'Image', 
         imageUrl: './assets/images/arrivalPosition.jpg', 
