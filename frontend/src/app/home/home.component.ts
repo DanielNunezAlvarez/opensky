@@ -12,11 +12,11 @@ import { SortService } from '@syncfusion/ej2-angular-grids';
 // import { ChangeEventArgs } from '@syncfusion/ej2-angular-calendars';
 import { GridComponent } from '@syncfusion/ej2-angular-grids';
 import { addClass, removeClass } from '@syncfusion/ej2-base';
-import { MapsTheme, Maps, Legend, Marker, MapsTooltip, ILoadEventArgs } from '@syncfusion/ej2-angular-maps';
+import { MapsTheme, Maps, Legend, Marker, MapsTooltip, ILoadEventArgs, Zoom, NavigationLine, MarkerSettingsModel, MarkerSettings, MarkerType } from '@syncfusion/ej2-angular-maps';
 import worldMap from './world-map.json';
 import worldAirports from './worldAirports.json'
 import airportsDatabase from './airportsDatabase.json'
-Maps.Inject(Legend, Marker, MapsTooltip);
+Maps.Inject(Legend, Marker, MapsTooltip, Zoom, NavigationLine);
 declare var require: any;
 
 @Component({
