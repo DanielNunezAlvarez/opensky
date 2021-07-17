@@ -151,7 +151,7 @@ export class HomeComponent {
       this.maxEndDate = this.today
     }
     else {
-      this.maxEndDate = maxBeginDateAux
+      this.maxEndDate = maxEndDateAux
     }
   
     let dayBegin = (args.value.getDate().toString())
