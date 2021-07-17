@@ -52,8 +52,8 @@ export class HomeComponent {
   
   public flag: boolean = false;
   
-  @ViewChild('maps')
-  public maps: Maps;
+//   @ViewChild('maps')
+//   public maps: Maps;
 
   //Execute on init
   public ngOnInit(): void {
