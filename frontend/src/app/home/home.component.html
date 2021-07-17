@@ -38,14 +38,7 @@
             <div>
                 Select an initial date:
             </div>   
-            <div id="control_wrapper">
-<!--                 <div id="container" style="overflow:auto;padding-left:0px">
-                    <ejs-calendar (change)='onValueChangeBegin($event)'></ejs-calendar>
-                    <span id="selectedBegin">Selected Value: </span>
-                </div> -->
-                 
-                
-                <!-- Date picker: with hour -->                
+            <div id="control_wrapper">              
                 <div id="container" style="overflow:auto;padding-left:0px">
                   <ejs-datetimepicker [format]="format" [max]='maxBeginDate' (change)='onValueChangeBegin($event)'></ejs-datetimepicker>
                   <span id="selectedBegin">Selected Value: </span>  
@@ -55,18 +48,12 @@
 
         </div>
 
-        <!-- Date picker: End Date -->
         <div class="control-section" style="overflow:auto;padding-left:50px">
             <div>
                 Select a final date:
             </div>  
             <div id="control_wrapper">
-<!--                 <div id="container" style="overflow:auto;padding-left:0px">
-                    <ejs-calendar [min]='minDate' [max]='maxDate' (change)='onValueChangeEnd($event)'></ejs-calendar>
-                    <span id="selectedEnd">Selected Value: </span>
-                </div> -->
-            
-                 <!-- Date picker: with hour -->                
+
                 <div id="container" style="overflow:auto;padding-left:0px">
                   <ejs-datetimepicker [format]="format" [min]='minEndDate' [max]='maxEndDate' (change)='onValueChangeEnd($event)'></ejs-datetimepicker>
                   <span id="selectedEnd">Selected Value: </span>  
@@ -79,7 +66,7 @@
     </div>
 
     <!-- Results -->
-    <div class="row">
+    <div class="row" style="min-height: 650px;">
 
         <!-- Table -->
         <div class="control-table" style="padding-top: 50px;">
@@ -103,28 +90,11 @@
     </div>
 
     <!-- Maps -->
-    <div class="row">
+    <div class="row" style="padding-left: 300px;">
 
-<!--          <div class="control-map" style="padding-left: 300px;"> -->
-
-<!--             <div> -->
-                <ejs-maps #maps [zoomSettings]='zoomSettings' [layers]='layers' 
-                    (load)="load($event)">
-                </ejs-maps>
-<!--             </div> -->
-        
-<!--         </div> -->
-
-<!--     <div class="control-map">   
-      <div class="col-lg-9">
-        <ejs-maps #maps id='container' style="display:block;"
-            [zoomSettings]='zoomSettings' [layers]='layers' (load)="load($event)"  
-            (click)="mapClicked($event)">
+        <ejs-maps  #maps [zoomSettings]='zoomSettings' [layers]='layers' [titleSettings]='titleSettings'
+            (load)="load($event)">
         </ejs-maps>
-    </div>    
-  </div> -->
-
-
 
     </div>
 

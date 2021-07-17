@@ -1,15 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-// import { Query } from '@syncfusion/ej2-data';
-// import { EmitType } from '@syncfusion/ej2-base';
-// import { FilteringEventArgs } from '@syncfusion/ej2-dropdowns';
 import { ViewEncapsulation } from '@angular/core';
-// import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
 import { HttpClient } from '@angular/common/http';
 import { DropDownListComponent } from '@syncfusion/ej2-angular-dropdowns';
 import { SortService } from '@syncfusion/ej2-angular-grids';
-// import { DateRangePickerComponent } from '@syncfusion/ej2-angular-calendars';
-// import { ButtonComponent } from '@syncfusion/ej2-angular-buttons';
-// import { ChangeEventArgs } from '@syncfusion/ej2-angular-calendars';
 import { GridComponent } from '@syncfusion/ej2-angular-grids';
 import { addClass, removeClass } from '@syncfusion/ej2-base';
 import { MapsTheme, Maps, Legend, Marker, MapsTooltip, ILoadEventArgs, Zoom, NavigationLine, MarkerSettingsModel, MarkerSettings, MarkerType } from '@syncfusion/ej2-angular-maps';
@@ -97,6 +90,15 @@ export class HomeComponent {
         height: 20, width: 20,
         tooltipSettings: { visible: true, valuePath: 'name' }, 
         animationDuration: 0 
+        },
+        { 
+          visible: true, 
+          dataSource: [], 
+          shape: 'Image', 
+          imageUrl: './assets/images/departurePosition.png', 
+          height: 20, width: 20,
+          tooltipSettings: { visible: true, valuePath: 'name' }, 
+          animationDuration: 0 
         }
         ];
 
@@ -114,13 +116,55 @@ export class HomeComponent {
   // Function to get the API response
   getOpenskyStatistics(airport, begin, end): void{
     this.loadingTable = true;
+    
     this.getOpenskyStats(airport, begin, end).subscribe((data)=>{
       this.arrivals = data['arrivals'];
+      this.departureAirportsLocation(this.arrivals)
       this.loadingTable = false;
     });
     
-    this.departureAirportsLocation(this.arrivals)
   }
+
+      // Function to get departure airports location
+      departureAirportsLocation(arrivalsArray): void{
+      
+        let j = 0
+        for (let i = 0; i < arrivalsArray.length; i++) {
+          if (arrivalsArray[i]['departureAirport']!=null){
+            try {
+              this.departureLocation[j] = airportsDatabase[arrivalsArray[i]['departureAirport']]
+              j = j+1
+            }
+            catch {
+            }
+
+          }
+        }
+  
+        this.maps.layers[0].markerSettings = [
+          { 
+          visible: true, 
+          dataSource: this.arrivalLocation, 
+          shape: 'Image', 
+          imageUrl: './assets/images/arrivalPosition.jpg', 
+          height: 20, width: 20,
+          tooltipSettings: { visible: true, valuePath: 'name' }, 
+          animationDuration: 0 
+          },
+          { 
+            visible: true, 
+            dataSource: this.departureLocation, 
+            shape: 'Image', 
+            imageUrl: './assets/images/departurePosition.png', 
+            height: 20, width: 20,
+            tooltipSettings: { visible: true, valuePath: 'name' }, 
+            animationDuration: 0 
+          }
+          ];
+  
+        this.maps.refresh();
+  
+        }
 
   // Function to make the API request
   public getOpenskyStats(airport, begin, end) {
@@ -248,33 +292,24 @@ export class HomeComponent {
     };
 
     public layers: object[] = [{
-        layerType: 'OSM'
-    }];
+        layerType: 'OSM',
 
-    // Function to get departure airports location
-    departureAirportsLocation(arrivalsArray): void{
-      
-      let j = 0
-      for (let i = 0; i < arrivalsArray.length; i++) {
-        if (arrivalsArray.departureAirport!=null){
-          this.departureLocation[j] = airportsDatabase[arrivalsArray.departureAirport]
-          j = j+1
+        markerClusterSettings: {
+          allowClustering: true,
+          shape: 'Image',
+          height: 30,
+          width: 30,
+          labelStyle: {color: 'black'},
+          imageUrl: './assets/images/departurePosition.png'
         }
-      }
-      
-      this.maps.layers[0].markerSettings = [
-      { 
-      visible: true, 
-      dataSource: this.departureLocation, 
-      shape: 'Image', 
-      imageUrl: './assets/images/departurePosition.jpg', 
-      height: 20, width: 20,
-      tooltipSettings: { visible: true, valuePath: 'name' }, 
-      animationDuration: 0 
-      }
-      ];
-      
-    }
+    }];
+    
+    public title: string = 'Airports location';
+
+    public titleSettings: object = {
+      text: this.title,
+      titleStyle: {size: '16px'}
+    };
   
 
 }
