@@ -39,7 +39,7 @@ export class HomeComponent {
   public pageSettings: Object;
   public today: Date = new Date();
   
-  public arrivalLocation = this.airportsDatabase['EDDM'];
+  arrivalLocation[0] = airportsDatabase['EDDM'];
   
 //   New time picker
   public maxBeginDate: Date = new Date();
