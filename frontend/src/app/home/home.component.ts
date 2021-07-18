@@ -218,7 +218,7 @@ export class HomeComponent {
       
       let departureExist = false
 
-      if (arrivalsArray[i]['departureAirport']!=null){
+      if (arrivalsArray[i]['departureAirport']!=null && arrivalsArray[i]['departureAirport']!=this.airport){
         
         for (let k = 0; k < j; k++){
           
