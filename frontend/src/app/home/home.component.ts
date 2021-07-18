@@ -95,7 +95,7 @@ export class HomeComponent {
           visible: true, 
           dataSource: [], 
           shape: 'Image', 
-          imageUrl: './assets/images/departurePosition.png', 
+          imageUrl: './assets/images/departurePosition2.png', 
           height: 20, width: 20,
           tooltipSettings: { visible: true, valuePath: 'name' }, 
           animationDuration: 0 
@@ -128,16 +128,26 @@ export class HomeComponent {
       // Function to get departure airports location
       departureAirportsLocation(arrivalsArray): void{
       
+        this.departureLocation = [];
         let j = 0
+
         for (let i = 0; i < arrivalsArray.length; i++) {
+          
+          let departureExist = false
+
           if (arrivalsArray[i]['departureAirport']!=null){
-            try {
+            
+            for (let k = 0; k < j; k++){
+              
+              if (this.departureLocation[k]==airportsDatabase[arrivalsArray[i]['departureAirport']]){
+                departureExist = true
+              }
+            }
+
+            if (departureExist == false){
               this.departureLocation[j] = airportsDatabase[arrivalsArray[i]['departureAirport']]
               j = j+1
             }
-            catch {
-            }
-
           }
         }
   
@@ -155,12 +165,21 @@ export class HomeComponent {
             visible: true, 
             dataSource: this.departureLocation, 
             shape: 'Image', 
-            imageUrl: './assets/images/departurePosition.png', 
+            imageUrl: './assets/images/departurePosition2.png', 
             height: 20, width: 20,
             tooltipSettings: { visible: true, valuePath: 'name' }, 
             animationDuration: 0 
           }
           ];
+
+        this.maps.layers[0].markerClusterSettings = {
+          allowClustering: true,
+          shape: 'Image',
+          height: 30,
+          width: 30,
+          labelStyle: {color: 'black'},
+          imageUrl: './assets/images/departurePosition2.png'
+        }
   
         this.maps.refresh();
   
@@ -300,7 +319,7 @@ export class HomeComponent {
           height: 30,
           width: 30,
           labelStyle: {color: 'black'},
-          imageUrl: './assets/images/departurePosition.png'
+          imageUrl: './assets/images/departurePosition2.png'
         }
     }];
     

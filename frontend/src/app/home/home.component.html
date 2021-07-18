@@ -1,7 +1,19 @@
+<!-- Initial note -->
+<div align="left">
+    <p style="font-size: 14px;color:black; font:italic;">Author: Daniel Núñez Álvarez</p>
+    <p style="font-size: 14px;color:black; font:italic;">NOTE: This page is developed as a test for the Arcadia coding challenge.</p>
+    <br>
+    <br>
+</div>
+
 <!-- Page -->
 <div class="container-fluid" id="home">
 
     <!-- Inputs -->
+    <div align="left" style="padding-right: 50px;">
+        <h1 style="color:midnightblue;">Introduce search data</h1>
+        <br>
+    </div>
     <div class="row">
 
         <!-- Airport -->
@@ -66,22 +78,27 @@
     </div>
 
     <!-- Results -->
+    <div align="left" style="padding-right: 50px;">
+        <h1 style="color:midnightblue;">Arrivals at airport</h1>
+        <br>
+    </div>
+
     <div class="row" style="min-height: 650px;">
 
         <!-- Table -->
-        <div class="control-table" style="padding-top: 50px;">
+        <div class="control-table" style="padding-top: 10px;">
             <ejs-toolbar class='e-gridlist' (clicked)="onClicked($event.originalEvent)">
                 <e-items>
                     <e-item text='Departure Airport'></e-item>
                     <e-item text='Callsign'></e-item>
-                    <e-item text='Departure Airport Distance'></e-item>
+                    <e-item text='Distance from departure airport'></e-item>
                 </e-items>
             </ejs-toolbar>
             <ejs-grid #grid (dataBound)="dataBound()" class="sortingenabled" [nbSpinner]="loadingTable" [dataSource]='arrivals' allowPaging='true' allowSorting='true' [pageSettings]='pageSettings'>
                 <e-columns>
                     <e-column field='departureAirport' headerText='Departure Airport' textAlign='Center'></e-column>
                     <e-column field='callsign' headerText='Callsign' textAlign='Center'></e-column>
-                    <e-column field='departureAirportHorDistance' headerText='Departure Airport Distance' textAlign='Center'></e-column>
+                    <e-column field='departureAirportHorDistance' headerText='Distance from departure airport' textAlign='Center'></e-column>
                 </e-columns>
             </ejs-grid>
 
@@ -90,6 +107,10 @@
     </div>
 
     <!-- Maps -->
+    <div align="center">
+        <h1 style="color:midnightblue; ">Find the airports in the map</h1>
+    <br>
+    </div>
     <div class="row" style="padding-left: 300px;">
 
         <ejs-maps  #maps [zoomSettings]='zoomSettings' [layers]='layers' [titleSettings]='titleSettings'
@@ -97,6 +118,10 @@
         </ejs-maps>
 
     </div>
-
+    <i>
+        <div align="center" style="padding-right: 50px;">
+            <p id="content" style="font-size: 16px;color:red">Disclaimer: This feature is under development and may have a slow performance with too long results. If that is the case, please introduce a shorter range time.</p>
+        </div>
+    </i>
 <!-- Page End  -->
 </div>
