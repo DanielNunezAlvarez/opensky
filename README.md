@@ -26,7 +26,7 @@ It generates a single web user interface that shows:
 
   1. A dropdown list with the airports available to choose. The list of airports is contained in `/frontend/src/app/home/worldAirports.json`.
   2. A date time picker to choose the begin date and the end date.
-  3. A table with the results retrieved from the API call. The table has pagination and its columns can be sorted and hidden/shown. It is possible to add and remove data in a very easy way.
+  3. A table with the results retrieved from the API call. The table has pagination and its columns can be sorted and hidden/shown. It is possible to remove or add new data to the table in a very easy way.
   4. A interactive map with the location of the arrival airport and all departure aiports.
 
 The frontend allows the possibility of adding additional pages that can be reached through the main menu.
