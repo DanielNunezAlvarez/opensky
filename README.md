@@ -29,3 +29,8 @@ It generates a single web user interface that shows:
   3. A table with the results retrieved from the API call. The table has pagination and its columns can be sorted and hidden/shown. It is possible to add and remove data in a very easy way.
   4. A interactive map with the location of the arrival airport and all departure aiports.
 
+The frontend allows the possibility of adding additional pages that can be reached through the main menu.
+
+### Docker
+
+The file `docker-compose.yml` deploys a Docker container with one service for the API backend and one service for the Angular frontend. These services are based on the images created in the respective `Dockerfile`. 
