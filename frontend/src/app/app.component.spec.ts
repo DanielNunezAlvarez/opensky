@@ -20,10 +20,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'opensky'`, () => {
+  it(`should have as title 'Opensky'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('ocp-dashboard');
+    expect(app.title).toEqual('Opensky');
   });
 
   it('should render title', () => {
